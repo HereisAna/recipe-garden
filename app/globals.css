@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream-50: #FAF8F3;
+  --color-cream-100: #F2E8CF;
+  --color-cream-200: #EBE0C3;
+
+  --color-sage-50: #F5FAF0;
+  --color-sage-100: #E8F4DC;
+  --color-sage-200: #D4EBBB;
+  --color-sage-300: #C0E39A;
+  --color-sage-400: #A7C957;
+
+  --color-olive-500: #6A994E;
+  --color-olive-600: #5A8442;
+  --color-olive-700: #4A6F36;
+
+  --color-forest-800: #4A7C52;
+  --color-forest-900: #386641;
+
+  --color-accent-50: #F9E8E9;
+  --color-accent-100: #F4D1D2;
+  --color-accent-200: #E9A3A5;
+  --color-accent-500: #BC4749;
+  --color-accent-600: #A33D3F;
+
+  --font-family-sans: Inter, ui-sans-serif, system-ui;
+}
+
+@layer base {
+  body {
+    @apply bg-cream-100 text-forest-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-forest-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-olive-500 text-white px-6 py-3 rounded-lg font-medium
+           hover:bg-olive-600 transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-olive-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-sage-200 text-forest-900 px-6 py-3 rounded-lg font-medium
+           hover:bg-sage-300 transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-sage-300 focus:ring-offset-2;
+  }
+
+  .btn-danger {
+    @apply bg-accent-500 text-white px-4 py-2 rounded-lg font-medium
+           hover:bg-accent-600 transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border-2 border-sage-200 rounded-lg
+           focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-500/20
+           transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden
+           transition-all duration-300 hover:shadow-xl;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F2E8CF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6A994E;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #386641;
+}
