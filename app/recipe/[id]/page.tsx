@@ -52,10 +52,10 @@ export default function RecipePage({ params }: { params: Promise<{ id: string }>
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-forest-900 mb-4">Recipe Not Found</h1>
-          <p className="text-gray-600 mb-8">The recipe you're looking for doesn't exist.</p>
-          <Link href="/" className="btn-primary">
-            Back to Home
+          <h1 className="text-4xl font-bold text-forest-900 mb-4">hmm, can't find that one</h1>
+          <p className="text-gray-600 mb-8">this recipe doesn't exist (or maybe we deleted it?)</p>
+          <Link href="/" className="bg-olive-500 hover:bg-olive-600 text-white font-medium px-6 py-3 rounded-lg transition-colors inline-block">
+            go back home
           </Link>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function RecipePage({ params }: { params: Promise<{ id: string }>
             className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="font-medium">Back</span>
+            <span className="font-medium">back</span>
           </Link>
         </div>
 
@@ -134,7 +134,7 @@ export default function RecipePage({ params }: { params: Promise<{ id: string }>
           >
             <div className="flex items-center gap-3 mb-4">
               <ChefHat className="w-6 h-6 text-olive-500" />
-              <h2 className="text-2xl font-bold text-forest-900">About This Dish</h2>
+              <h2 className="text-2xl font-bold text-forest-900">what it is</h2>
             </div>
             <p className="text-gray-700 leading-relaxed text-lg">{recipe.description}</p>
           </motion.div>
@@ -148,7 +148,7 @@ export default function RecipePage({ params }: { params: Promise<{ id: string }>
           >
             <div className="flex items-center gap-3 mb-6">
               <ShoppingBasket className="w-6 h-6 text-olive-500" />
-              <h2 className="text-2xl font-bold text-forest-900">Ingredients</h2>
+              <h2 className="text-2xl font-bold text-forest-900">what you need</h2>
             </div>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
@@ -174,7 +174,7 @@ export default function RecipePage({ params }: { params: Promise<{ id: string }>
           >
             <div className="flex items-center gap-3 mb-6">
               <Leaf className="w-6 h-6 text-olive-500" />
-              <h2 className="text-2xl font-bold text-forest-900">Instructions</h2>
+              <h2 className="text-2xl font-bold text-forest-900">how to make it</h2>
             </div>
             <ol className="space-y-6">
               {recipe.steps.map((step, index) => (
@@ -196,7 +196,7 @@ export default function RecipePage({ params }: { params: Promise<{ id: string }>
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.55 }}
             >
-              <h3 className="font-semibold text-forest-900 mb-2">📝 Notes</h3>
+              <h3 className="font-semibold text-forest-900 mb-2">notes:</h3>
               <p className="text-gray-700">{recipe.notes}</p>
             </motion.div>
           )}
