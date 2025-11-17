@@ -81,10 +81,10 @@ export default function Home() {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-forest-900 mb-2">
-              the recipes
+              The recipes
             </h2>
             <p className="text-gray-600">
-              {total} so far
+              {total} {total === 1 ? 'recipe' : 'recipes'} so far
             </p>
           </div>
           <Link
@@ -128,8 +128,8 @@ export default function Home() {
         {/* No Results */}
         {!loading && recipes.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-xl text-gray-600">nothing here yet...</p>
-            <p className="text-gray-500 mt-2">try different filters maybe?</p>
+            <p className="text-xl text-gray-600">Nothing here yet!</p>
+            <p className="text-gray-500 mt-2">Try adjusting your filters or search.</p>
           </div>
         )}
 
@@ -147,7 +147,7 @@ export default function Home() {
       <footer className="bg-forest-900 text-cream-100 py-8 mt-20">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-sm">
-            made by lynda, ayano & anastasiia • {new Date().getFullYear()}
+            Made by Lynda, Ayano & Anastasiia • {new Date().getFullYear()}
           </p>
         </div>
       </footer>

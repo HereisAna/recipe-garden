@@ -16,22 +16,22 @@ export default function LandingSection() {
       {/* Main content */}
       <div className="max-w-3xl mx-auto px-6 text-center z-10">
         <h1 className="text-5xl md:text-7xl font-bold text-forest-900 mb-8 leading-tight">
-          hey, come on in!
+          Hey, come on in!
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-700 mb-6 leading-relaxed">
-          This is where Lynda, Ayano, and Anastasiia keep our recipes. Nothing fancy, just stuff we actually make and want to remember how to cook.
+          This is where Lynda, Ayano, and Anastasiia keep our recipes. Nothing fancy, just things we actually make and want to remember.
         </p>
 
         <p className="text-lg text-gray-600 mb-12">
-          (basically our kitchen notes in website form)
+          (Think of it as our kitchen notebook in website form)
         </p>
 
         <button
           onClick={scrollToRecipes}
           className="bg-olive-500 hover:bg-olive-600 text-white font-medium px-8 py-3 rounded-lg transition-colors inline-flex items-center gap-2"
         >
-          see what's cooking
+          See what we're cooking
           <ChevronDown className="w-5 h-5" />
         </button>
       </div>

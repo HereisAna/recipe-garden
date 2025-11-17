@@ -107,8 +107,8 @@ export default function AdminLogin() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-olive-100 rounded-full mb-4">
             <Lock className="w-8 h-8 text-olive-500" />
           </div>
-          <h1 className="text-3xl font-bold text-forest-900 mb-2">admin login</h1>
-          <p className="text-gray-600">password required</p>
+          <h1 className="text-3xl font-bold text-forest-900 mb-2">Admin Login</h1>
+          <p className="text-gray-600">Password required</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
