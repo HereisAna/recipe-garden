@@ -168,7 +168,9 @@ export default function AddRecipe() {
       });
 
       if (!uploadResponse.ok) {
-        throw new Error('Failed to upload image');
+        const errorData = await uploadResponse.json();
+        console.error('Upload failed:', errorData);
+        throw new Error(errorData.error || 'Failed to upload image');
       }
 
       const { url } = await uploadResponse.json();

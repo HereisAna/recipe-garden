@@ -10,11 +10,18 @@ export async function POST(request: NextRequest) {
       const file = formData.get('file') as File;
 
       if (!file) {
+        console.error('Upload error: No file provided');
         return NextResponse.json(
           { error: 'No file provided' },
           { status: 400 }
         );
       }
+
+      console.log('Uploading file:', {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+      });
 
       // Generate unique filename
       const timestamp = Date.now();
@@ -22,12 +29,30 @@ export async function POST(request: NextRequest) {
       const extension = file.name.split('.').pop();
       const fileName = `recipe-${timestamp}-${random}.${extension}`;
 
+      console.log('Generated filename:', fileName);
+
       // Convert File to ArrayBuffer then to Buffer for Supabase
       const arrayBuffer = await file.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
+      console.log('Buffer size:', buffer.length);
+
+      // Initialize Supabase client
+      let client;
+      try {
+        client = supabaseAdmin();
+        console.log('Supabase admin client initialized');
+      } catch (error) {
+        console.error('Failed to initialize Supabase client:', error);
+        return NextResponse.json(
+          { error: `Supabase initialization failed: ${error instanceof Error ? error.message : 'Unknown error'}` },
+          { status: 500 }
+        );
+      }
+
       // Upload to Supabase Storage
-      const { data, error } = await supabaseAdmin()
+      console.log('Attempting to upload to Supabase Storage bucket: recipe-images');
+      const { data, error } = await client
         .storage
         .from('recipe-images')
         .upload(fileName, buffer, {
@@ -36,18 +61,26 @@ export async function POST(request: NextRequest) {
         });
 
       if (error) {
-        console.error('Supabase storage error:', error);
+        console.error('Supabase storage error:', {
+          message: error.message,
+          statusCode: error.statusCode,
+          error: error,
+        });
         return NextResponse.json(
-          { error: 'Failed to upload image' },
+          { error: `Supabase storage error: ${error.message}` },
           { status: 500 }
         );
       }
 
+      console.log('Upload successful:', data);
+
       // Get public URL
-      const { data: { publicUrl } } = supabaseAdmin()
+      const { data: { publicUrl } } = client
         .storage
         .from('recipe-images')
         .getPublicUrl(fileName);
+
+      console.log('Public URL:', publicUrl);
 
       return NextResponse.json({
         url: publicUrl,
@@ -55,8 +88,9 @@ export async function POST(request: NextRequest) {
       });
     } catch (error) {
       console.error('Error uploading image:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       return NextResponse.json(
-        { error: 'Internal server error' },
+        { error: `Internal server error: ${errorMessage}` },
         { status: 500 }
       );
     }
