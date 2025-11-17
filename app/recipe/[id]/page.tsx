@@ -4,13 +4,13 @@ import { use, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ChefHat, Clock, Leaf, ShoppingBasket } from 'lucide-react';
+import { ArrowLeft, ChefHat, Leaf, ShoppingBasket } from 'lucide-react';
 import type { Recipe } from '@/lib/types';
 
 const difficultyInfo = {
-  easy: { color: 'bg-green-100 text-green-800', icon: '👌', time: '15-30 min' },
-  medium: { color: 'bg-yellow-100 text-yellow-800', icon: '👨‍🍳', time: '30-60 min' },
-  hard: { color: 'bg-red-100 text-accent-600', icon: '🔥', time: '60+ min' },
+  easy: { color: 'bg-green-100 text-green-800', icon: '👌' },
+  medium: { color: 'bg-yellow-100 text-yellow-800', icon: '👨‍🍳' },
+  hard: { color: 'bg-red-100 text-accent-600', icon: '🔥' },
 };
 
 export default function RecipePage({ params }: { params: Promise<{ id: string }> }) {
@@ -124,116 +124,82 @@ export default function RecipePage({ params }: { params: Promise<{ id: string }>
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Description */}
-            <motion.div
-              className="bg-white rounded-xl p-8 shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <ChefHat className="w-6 h-6 text-olive-500" />
-                <h2 className="text-2xl font-bold text-forest-900">About This Dish</h2>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-lg">{recipe.description}</p>
-            </motion.div>
+        <div className="space-y-8">
+          {/* Description */}
+          <motion.div
+            className="bg-white rounded-xl p-8 shadow-md"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <ChefHat className="w-6 h-6 text-olive-500" />
+              <h2 className="text-2xl font-bold text-forest-900">About This Dish</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed text-lg">{recipe.description}</p>
+          </motion.div>
 
-            {/* Ingredients */}
-            <motion.div
-              className="bg-white rounded-xl p-8 shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <ShoppingBasket className="w-6 h-6 text-olive-500" />
-                <h2 className="text-2xl font-bold text-forest-900">Ingredients</h2>
-              </div>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
-                  <li key={index} className="flex items-start gap-3 bg-sage-50 p-3 rounded-lg">
-                    <span className="flex-shrink-0 w-6 h-6 bg-olive-500 text-white rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
-                      ✓
-                    </span>
-                    <div className="flex-1">
-                      <span className="font-medium text-forest-900">{ingredient.name}</span>
-                      <span className="text-gray-600"> — {ingredient.quantity}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Steps */}
-            <motion.div
-              className="bg-white rounded-xl p-8 shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <Leaf className="w-6 h-6 text-olive-500" />
-                <h2 className="text-2xl font-bold text-forest-900">Instructions</h2>
-              </div>
-              <ol className="space-y-6">
-                {recipe.steps.map((step, index) => (
-                  <li key={index} className="flex gap-4">
-                    <span className="flex-shrink-0 w-8 h-8 bg-olive-500 text-white rounded-full flex items-center justify-center font-bold">
-                      {index + 1}
-                    </span>
-                    <p className="text-gray-700 leading-relaxed pt-1">{step}</p>
-                  </li>
-                ))}
-              </ol>
-            </motion.div>
-
-            {/* Notes */}
-            {recipe.notes && (
-              <motion.div
-                className="bg-sage-50 border-2 border-sage-200 rounded-xl p-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.55 }}
-              >
-                <h3 className="font-semibold text-forest-900 mb-2">📝 Notes</h3>
-                <p className="text-gray-700">{recipe.notes}</p>
-              </motion.div>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            <motion.div
-              className="bg-white rounded-xl p-6 shadow-md sticky top-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <h3 className="font-bold text-forest-900 mb-4 text-lg">Quick Info</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-olive-500" />
-                  <div>
-                    <p className="text-sm text-gray-600">Estimated Time</p>
-                    <p className="font-medium text-forest-900">{diffInfo.time}</p>
+          {/* Ingredients */}
+          <motion.div
+            className="bg-white rounded-xl p-8 shadow-md"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <ShoppingBasket className="w-6 h-6 text-olive-500" />
+              <h2 className="text-2xl font-bold text-forest-900">Ingredients</h2>
+            </div>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
+                <li key={index} className="flex items-start gap-3 bg-sage-50 p-3 rounded-lg">
+                  <span className="flex-shrink-0 w-6 h-6 bg-olive-500 text-white rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
+                    ✓
+                  </span>
+                  <div className="flex-1">
+                    <span className="font-medium text-forest-900">{ingredient.name}</span>
+                    <span className="text-gray-600"> — {ingredient.quantity}</span>
                   </div>
-                </div>
-                <div className="pt-4 border-t border-sage-200">
-                  <p className="text-xs text-gray-500 mb-2">Added on</p>
-                  <p className="text-sm font-medium text-forest-900">
-                    {new Date(recipe.created_at).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </p>
-                </div>
-              </div>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Steps */}
+          <motion.div
+            className="bg-white rounded-xl p-8 shadow-md"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <Leaf className="w-6 h-6 text-olive-500" />
+              <h2 className="text-2xl font-bold text-forest-900">Instructions</h2>
+            </div>
+            <ol className="space-y-6">
+              {recipe.steps.map((step, index) => (
+                <li key={index} className="flex gap-4">
+                  <span className="flex-shrink-0 w-8 h-8 bg-olive-500 text-white rounded-full flex items-center justify-center font-bold">
+                    {index + 1}
+                  </span>
+                  <p className="text-gray-700 leading-relaxed pt-1">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </motion.div>
+
+          {/* Notes */}
+          {recipe.notes && (
+            <motion.div
+              className="bg-sage-50 border-2 border-sage-200 rounded-xl p-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+            >
+              <h3 className="font-semibold text-forest-900 mb-2">📝 Notes</h3>
+              <p className="text-gray-700">{recipe.notes}</p>
             </motion.div>
-          </div>
+          )}
         </div>
       </div>
     </main>
