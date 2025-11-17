@@ -62,19 +62,24 @@ Before deploying, ensure you've completed these steps:
 Copy these exactly into Vercel:
 
 **Name:** `NEXT_PUBLIC_SUPABASE_URL`
-**Value:** `https://uulgveruhfmdpcuoonyz.supabase.co`
+**Value:** `<your-supabase-project-url>`
+(Find this in Supabase Dashboard → Settings → API)
 
 **Name:** `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-**Value:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1bGd2ZXJ1aGZtZHBjdW9vbnl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyNDAwNDEsImV4cCI6MjA3ODgxNjA0MX0.DYoHw8rM__9X4GMtTnSVagjoN3qsmlgOVT59GGsKuu8`
+**Value:** `<your-supabase-anon-key>`
+(Find this in Supabase Dashboard → Settings → API)
 
 **Name:** `SUPABASE_SERVICE_ROLE_KEY`
-**Value:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1bGd2ZXJ1aGZtZHBjdW9vbnl6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MzI0MDA0MSwiZXhwIjoyMDc4ODE2MDQxfQ.kFvOulH2pr950htkn6H5DgOot4QddROu3ADTmEHfLPQ`
+**Value:** `<your-supabase-service-role-key>`
+(Find this in Supabase Dashboard → Settings → API)
 
 **Name:** `ADMIN_PASSWORD`
-**Value:** `admin123` (change this to something secure!)
+**Value:** `<your-secure-admin-password>`
+(Choose a strong password for admin access)
 
 **Name:** `JWT_SECRET`
-**Value:** `lQKgASPPSFver/UIlKiY9aNyc/Wfh/XM2v1VUbbakm0=`
+**Value:** `<your-jwt-secret>`
+(Generate with: `openssl rand -base64 32`)
 
 ## After Deployment
 
