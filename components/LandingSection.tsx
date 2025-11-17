@@ -20,7 +20,7 @@ export default function LandingSection() {
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-700 mb-6 leading-relaxed">
-          This is where Lynda, Ayano, and Anastasiia keep our recipes. Nothing fancy, just things we actually make and want to remember.
+          This is where Lynda, Ayano, and Anastasiia share our recipes. The good stuff we like and want to remember how to make.
         </p>
 
         <p className="text-lg text-gray-600 mb-12">
@@ -31,7 +31,7 @@ export default function LandingSection() {
           onClick={scrollToRecipes}
           className="bg-olive-500 hover:bg-olive-600 text-white font-medium px-8 py-3 rounded-lg transition-colors inline-flex items-center gap-2"
         >
-          See what we're cooking
+          See what's cooking
           <ChevronDown className="w-5 h-5" />
         </button>
       </div>
