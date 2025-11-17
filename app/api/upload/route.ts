@@ -63,7 +63,6 @@ export async function POST(request: NextRequest) {
       if (error) {
         console.error('Supabase storage error:', {
           message: error.message,
-          statusCode: error.statusCode,
           error: error,
         });
         return NextResponse.json(
