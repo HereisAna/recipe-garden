@@ -347,19 +347,9 @@ export default function EditRecipe({ params }: { params: Promise<{ id: string }>
 
           {/* Ingredients */}
           <div>
-            <div className="flex justify-between items-center mb-3">
-              <label className="block text-sm font-semibold text-forest-900">
-                Ingredients * (Name and Quantity)
-              </label>
-              <button
-                type="button"
-                onClick={addIngredient}
-                className="inline-flex items-center gap-1 text-sm text-olive-500 hover:text-olive-600 font-medium"
-              >
-                <Plus className="w-4 h-4" />
-                Add Ingredient
-              </button>
-            </div>
+            <label className="block text-sm font-semibold text-forest-900 mb-3">
+              Ingredients * (Name and Quantity)
+            </label>
             <div className="space-y-3">
               {formData.ingredients.map((ingredient, index) => (
                 <div key={index} className="flex gap-2">
@@ -388,24 +378,22 @@ export default function EditRecipe({ params }: { params: Promise<{ id: string }>
                   )}
                 </div>
               ))}
+              <button
+                type="button"
+                onClick={addIngredient}
+                className="inline-flex items-center gap-1 text-sm text-olive-500 hover:text-olive-600 font-medium mt-2"
+              >
+                <Plus className="w-4 h-4" />
+                Add Ingredient
+              </button>
             </div>
           </div>
 
           {/* Steps */}
           <div>
-            <div className="flex justify-between items-center mb-3">
-              <label className="block text-sm font-semibold text-forest-900">
-                Instructions * (Step by step)
-              </label>
-              <button
-                type="button"
-                onClick={addStep}
-                className="inline-flex items-center gap-1 text-sm text-olive-500 hover:text-olive-600 font-medium"
-              >
-                <Plus className="w-4 h-4" />
-                Add Step
-              </button>
-            </div>
+            <label className="block text-sm font-semibold text-forest-900 mb-3">
+              Instructions * (Step by step)
+            </label>
             <div className="space-y-3">
               {formData.steps.map((step, index) => (
                 <div key={index} className="flex gap-2">
@@ -429,6 +417,14 @@ export default function EditRecipe({ params }: { params: Promise<{ id: string }>
                   )}
                 </div>
               ))}
+              <button
+                type="button"
+                onClick={addStep}
+                className="inline-flex items-center gap-1 text-sm text-olive-500 hover:text-olive-600 font-medium mt-2"
+              >
+                <Plus className="w-4 h-4" />
+                Add Step
+              </button>
             </div>
           </div>
 
