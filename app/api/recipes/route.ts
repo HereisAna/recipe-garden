@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      console.log('Recipe created successfully:', data.id);
+      console.log('Recipe created successfully');
       return NextResponse.json(data, { status: 201 });
     } catch (error) {
       console.error('Error creating recipe:', error);
